@@ -17,10 +17,10 @@ public class Runner {
     ArrayList<Pair<Employee, Company>> myList = new ArrayList<Pair<Employee, Company>>();
 
     myList.add(new Pair<Employee, Company>(new Employee("Rishi"), microsoft));
-    myList.add(new Pair<Employee, Company>(new Employee("Jose"), google));
-    myList.add(new Pair<Employee, Company>(new Employee("Jennifer"), google));
-    myList.add(new Pair<Employee, Company>(new Employee("Heather"), apple));
-    myList.add(new Pair<Employee, Company>(new Employee("Maria"), apple));
+    myList.add(new Pair<Employee, Company>(new Employee("Charlie"), google));
+    myList.add(new Pair<Employee, Company>(new Employee("Prabhav"), google));
+    myList.add(new Pair<Employee, Company>(new Employee("Yarin"), apple));
+    myList.add(new Pair<Employee, Company>(new Employee("Ari"), apple));
 
     while (true) {
       System.out.println("\n1. Display employees and companies");
