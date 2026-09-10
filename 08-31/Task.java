@@ -15,6 +15,16 @@ public class Task {
     return rank;
   }
 
+  public void setRank(int rank) {
+    this.rank = rank;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    Task other = (Task) o;
+    return this.getTaskName().equals(other.getTaskName());
+  }
+
   @Override
   public String toString() {
     return taskName + " rank " + rank;
