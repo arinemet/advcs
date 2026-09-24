@@ -88,26 +88,26 @@ public class SLList<E> {
     return removed;
   }
 
-  // public boolean remove(Object o) {
-  // if (head == null) {
-  // return false;
-  // }
-  // if (head.get().equals(o)) {
-  // head = head.next();
-  // size--;
-  // return true;
-  // }
-  // Node<E> current = head;
-  // while (current.next() != null) {
-  // if (current.next().get().equals(o)) {
-  // current.setNext(current.next().next());
-  // size--;
-  // return true;
-  // }
-  // current = current.next();
-  // }
-  // return false;
-  // }
+  public boolean remove(Object o) {
+    if (head == null) {
+      return false;
+    }
+    if (head.get().equals(o)) {
+      head = head.next();
+      size--;
+      return true;
+    }
+    Node<E> current = head;
+    while (current.next() != null) {
+      if (current.next().get().equals(o)) {
+        current.setNext(current.next().next());
+        size--;
+        return true;
+      }
+      current = current.next();
+    }
+    return false;
+  }
 
   public E set(int i, E e) {
     Node<E> current = head;
