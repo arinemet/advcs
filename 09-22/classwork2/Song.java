@@ -23,9 +23,6 @@ public class Song {
   }
 
   public boolean equals(Object o) {
-    if (!(o instanceof Song)) {
-      return false;
-    }
     Song other = (Song) o;
     return this.artist.equals(other.artist) && this.name.equals(other.name);
   }
