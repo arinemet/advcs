@@ -9,7 +9,7 @@ public class Node<E> {
         prev = null;
     }
 
-    public E getData() {
+    public E get() {
         return data;
     }
 
@@ -17,7 +17,7 @@ public class Node<E> {
         this.data = data;
     }
 
-    public Node<E> getNext() {
+    public Node<E> next() {
         return next;
     }
 
@@ -25,7 +25,7 @@ public class Node<E> {
         this.next = next;
     }
 
-    public Node<E> getPrev() {
+    public Node<E> prev() {
         return prev;
     }
 
