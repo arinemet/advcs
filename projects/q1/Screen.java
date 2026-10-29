@@ -24,6 +24,9 @@ public class Screen extends JPanel implements ActionListener, MouseListener {
     private JButton[] removeBtns;
     private JButton randomBtn, clearBtn;
 
+    public static final int WIDTH = 800;
+    public static final int HEIGHT = 600;
+
     public Screen() {
         items = new DLList<Item>();
 
@@ -40,49 +43,35 @@ public class Screen extends JPanel implements ActionListener, MouseListener {
         setLayout(null);
         addMouseListener(this);
 
-        // make the buttosn
+        // make the buttons
         addBtns = new JButton[names.length];
         removeBtns = new JButton[names.length];
         for (int i = 0; i < names.length; i++) {
             addBtns[i] = new JButton("Add " + names[i]);
-            addBtns[i].setBounds(10 + i * 155, Item.HEIGHT + 10, 150, 30);
+            addBtns[i].setBounds(10 + i * 155, HEIGHT + 10, 150, 30);
             addBtns[i].addActionListener(this);
             add(addBtns[i]);
 
             removeBtns[i] = new JButton("Remove " + names[i]);
-            removeBtns[i].setBounds(10 + i * 155, Item.HEIGHT + 45, 150, 30);
+            removeBtns[i].setBounds(10 + i * 155, HEIGHT + 45, 150, 30);
             removeBtns[i].addActionListener(this);
             add(removeBtns[i]);
         }
 
         randomBtn = new JButton("Randomize");
-        randomBtn.setBounds(10, Item.HEIGHT + 85, 160, 30);
+        randomBtn.setBounds(10, HEIGHT + 85, 160, 30);
         randomBtn.addActionListener(this);
         add(randomBtn);
 
         clearBtn = new JButton("Clear");
-        clearBtn.setBounds(180, Item.HEIGHT + 85, 160, 30);
+        clearBtn.setBounds(180, HEIGHT + 85, 160, 30);
         clearBtn.addActionListener(this);
         add(clearBtn);
     }
 
     public Dimension getPreferredSize() {
         // panel size
-        return new Dimension(Item.WIDTH, Item.HEIGHT + 160);
-    }
-
-    public void animate() {
-        while (true) {
-            // wiat
-            try {
-                Thread.sleep(16);
-            } catch (InterruptedException ex) {
-                Thread.currentThread().interrupt();
-            }
-
-            // repaint
-            repaint();
-        }
+        return new Dimension(WIDTH, HEIGHT + 160);
     }
 
     public void paintComponent(Graphics g) {
@@ -164,7 +153,7 @@ public class Screen extends JPanel implements ActionListener, MouseListener {
         BufferedImage img = sprites[item.getType()];
 
         if (item.getType() == Item.CLOUD) {
-            // cloud is ovlas
+            // cloud is ovals
             g.setColor(item.getColor());
             g.fillOval(item.getX(), item.getY() + 10, 70, 40);
             g.fillOval(item.getX() + 30, item.getY(), 70, 45);
@@ -174,8 +163,6 @@ public class Screen extends JPanel implements ActionListener, MouseListener {
         } else if (img != null) {
             // draw the image
             g.drawImage(img, item.getX(), item.getY(), item.getWidth(), item.getHeight(), null);
-        } else {
-            // dont draw anything
         }
     }
 
@@ -184,7 +171,7 @@ public class Screen extends JPanel implements ActionListener, MouseListener {
 
         // sky
         g.setColor(new Color(159, 188, 255));
-        g.fillRect(0, 0, Item.WIDTH, Item.HEIGHT);
+        g.fillRect(0, 0, WIDTH, HEIGHT);
 
         // sun
         g.setColor(new Color(255, 240, 0));
@@ -192,7 +179,7 @@ public class Screen extends JPanel implements ActionListener, MouseListener {
 
         // raod and pillars
         g.setColor(new Color(192, 54, 44));
-        g.fillRect(0, 350, Item.WIDTH, 10);
+        g.fillRect(0, 350, WIDTH, 10);
         g.fillRect(150, 100, 25, 400);
         g.fillRect(550, 100, 25, 400);
 
@@ -210,6 +197,6 @@ public class Screen extends JPanel implements ActionListener, MouseListener {
 
         // ocean
         g.setColor(new Color(0, 123, 147));
-        g.fillRect(0, 400, Item.WIDTH, 200);
+        g.fillRect(0, 400, WIDTH, 200);
     }
 }

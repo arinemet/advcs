@@ -7,9 +7,6 @@ public class Item {
     public static final int CAR = 3;
     public static final int BUOY = 4;
 
-    public static final int WIDTH = 800;
-    public static final int HEIGHT = 600;
-
     private int type;
     private int x;
     private int y;
@@ -26,25 +23,21 @@ public class Item {
 
     }
 
-    // picks a new random spot (and color) that fits the item's type
+    // picks a new random spot that fits the item's type
     public void randomize() {
-        x = (int) (Math.random() * (WIDTH - 140)) + 20;
+        x = (int) (Math.random() * (Screen.WIDTH - 140)) + 20;
         if (type == BOAT) {
-            y = (int) (Math.random() * 90) + 440;
-            color = new Color((int) (Math.random() * 200), (int) (Math.random() * 200), (int) (Math.random() * 200));
+            y = (int) (Math.random() * 90) + 400;
         } else if (type == SEAGULL) {
             y = (int) (Math.random() * 150) + 40;
-            color = Color.LIGHT_GRAY;
         } else if (type == CLOUD) {
             y = (int) (Math.random() * 120) + 30;
             color = new Color(224, 224, 224);
         } else if (type == CAR) {
             // on the bridge
             y = 350 - getHeight();
-            color = new Color((int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256));
         } else {
             y = (int) (Math.random() * 90) + 440;
-            color = Color.RED;
         }
     }
 

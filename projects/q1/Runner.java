@@ -13,6 +13,5 @@ public class Runner {
 
         frame.pack();
 
-        screen.animate();
     }
 }
