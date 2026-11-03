@@ -78,16 +78,8 @@ public class Screen extends JPanel implements ActionListener, MouseListener {
         super.paintComponent(g);
         drawBackground(g);
 
-        // clouds go first
         for (int i = 0; i < items.size(); i++) {
-            if (items.get(i).getType() == Item.CLOUD) {
-                drawItem(g, items.get(i));
-            }
-        }
-        for (int i = 0; i < items.size(); i++) {
-            if (items.get(i).getType() != Item.CLOUD) {
-                drawItem(g, items.get(i));
-            }
+            drawItem(g, items.get(i));
         }
 
         // writting text
@@ -124,7 +116,7 @@ public class Screen extends JPanel implements ActionListener, MouseListener {
         repaint();
     }
 
-    // mosue stuff
+    // mouse handling
     public void mousePressed(MouseEvent e) {
         // delete the item
         for (int i = items.size() - 1; i >= 0; i--) {

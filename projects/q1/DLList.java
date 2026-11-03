@@ -62,12 +62,10 @@ public class DLList<E> {
     }
 
     public boolean contains(Object e) {
-        Node<E> current = head.next();
-        while (current != tail) {
+        for (Node<E> current = head.next(); current != tail; current = current.next()) {
             if (current.get().equals(e)) {
                 return true;
             }
-            current = current.next();
         }
         return false;
     }
@@ -91,36 +89,27 @@ public class DLList<E> {
     public E set(int index, E element) {
         Node<E> n = getNode(index);
         E oldData = n.get();
-        Node<E> replacement = new Node<E>(element);
-
-        Node<E> before = n.prev();
-        Node<E> after = n.next();
-
-        before.setNext(replacement);
-        replacement.setPrev(before);
-        replacement.setNext(after);
-        after.setPrev(replacement);
-
+        n.setData(element);
         return oldData;
     }
 
     public String toString() {
         String result = "[";
-        Node<E> current = head.next();
-
-        while (current != tail) {
+        for (Node<E> current = head.next(); current != tail; current = current.next()) {
             result += current.get();
             if (current.next() != tail) {
                 result += ", ";
             }
-            current = current.next();
         }
-
         result += "]";
         return result;
     }
 
     private Node<E> getNode(int index) {
+        if (index > size - 1 || index < 0) {
+            return null;
+        }
+
         Node<E> current;
 
         if (index < size / 2) {
@@ -129,8 +118,8 @@ public class DLList<E> {
                 current = current.next();
             }
         } else {
-            current = tail;
-            for (int i = size; i > index; i--) {
+            current = tail.prev();
+            for (int i = size - 1; i > index; i--) {
                 current = current.prev();
             }
         }
@@ -138,15 +127,7 @@ public class DLList<E> {
         return current;
     }
 
-    public Node<E> getHead() {
-        return head.next();
-    }
-
     public void clear() {
-        head.setNext(null);
-        tail.setPrev(null);
-        head = new Node<E>(null);
-        tail = new Node<E>(null);
         head.setNext(tail);
         tail.setPrev(head);
         size = 0;

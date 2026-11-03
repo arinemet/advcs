@@ -18,9 +18,7 @@ public class Item {
     }
 
     public int getType() {
-
         return type;
-
     }
 
     // picks a new random spot that fits the item's type
@@ -42,9 +40,7 @@ public class Item {
     }
 
     public int getX() {
-
         return x;
-
     }
 
     public int getY() {
