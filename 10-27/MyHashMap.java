@@ -20,36 +20,36 @@ public class MyHashMap<K, V> {
   private MyHashSet<K> keySet;
 
   public MyHashMap() {
-    // indeces 0000 -> 9999
     hashArray = new Object[10000];
     size = 0;
     keySet = new MyHashSet<>();
   }
 
   public V put(K key, V value) {
-    V previous = null;
-    if (hashArray[key.hashCode()] != null) {
-      previous = (V) hashArray[key.hashCode()];
+    int index = key.hashCode();
+    V previous = (V) hashArray[index];
+    if (previous == null) {
+      keySet.add(key);
+      size++;
     }
-    keySet.add(key);
-    hashArray[key.hashCode()] = value;
-    size++;
+    hashArray[index] = value;
     return previous;
-
   }
 
   public V get(Object key) {
-    return (V) hashArray[key.hashCode()];
+    int index = key.hashCode();
+    return (V) hashArray[index];
   }
 
   public V remove(Object key) {
-    V previous = null;
-    if (hashArray[key.hashCode()] != null) {
-      previous = (V) hashArray[key.hashCode()];
-      keySet.remove(key);
-      hashArray[key.hashCode()] = null;
-      size--;
+    int index = key.hashCode();
+    V previous = (V) hashArray[index];
+    if (previous == null) {
+      return null;
     }
+    keySet.remove(key);
+    hashArray[index] = null;
+    size--;
     return previous;
   }
 
@@ -60,4 +60,5 @@ public class MyHashMap<K, V> {
   public MyHashSet<K> keySet() {
     return keySet;
   }
+
 }
