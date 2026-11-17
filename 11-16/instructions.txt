@@ -1,0 +1,60 @@
+With your partner, create the following…
+
+Design a grid map that is a 10 by 10 using a hash table.  Each grid location can contain multiple things.  The key will be of the Location class and the value of the GridObject class.
+
+The Location class contains row and column positions in the grid.  The hashCode is calculated from the row and column.  The equals method is based on the values of the row and column. 
+
+The GridObject class will contain the name of the item and a drawMe(Graphics,int,int) that will draw the item at a given location.  Gid objects backgrounds are water, dirt, sand, and grass.  Then include a tree (green circle with a brown rectangle) and a boulder (gray circle).
+
+An example of a grid map hash table data.
+
+Location
+GridObject
+0, 0
+water 
+0, 1
+grass, tree
+1, 0
+dirt, boulder
+1,1
+sand
+
+
+Example of the graphical representation
+
+
+🌳
+🪨
+
+
+
+Once you have your classes set up, adding a dirt area and a boulder to row 1 and column 0 would look like the following.
+
+MyHashTable<Location, GridObject> myGridTable = new MyHashTable<Location, GridObject>();
+Location key = new Location(1,0);
+GridObject dirt = new GridObject("dirt");
+GridObject boulder = new GridObject("boulder");
+myGridTable.put( key, dirt );
+myGridTable.put( key, boulder );
+
+
+
+
+Create a 10 by 10 map with water, dirt, sand, and grass.  Make sure there is a body of water.  This can be the ocean, a river, or a lake.  Include some trees and boulders. Hint: Use loops to help with this process.
+
+
+When drawing your map, you can use a nested for-loop to go through the rows and columns.  Create a key given the row and column.  
+
+for(int row=0; row<10; row++){
+	for(int col=0; col<10; col++){
+		Location key = new Location(row, col);
+		//Use that key to get the values.
+DLList<GridObject> gridObjectsList = gridMapTable.get( key );
+//Draw the items in the gridObjectsList at the given row and column.
+	}
+}
+
+
+
+Animation
+Using multithreading, animate a boat that moves randomly around the water.  It cannot go on land.  The boat can only move from one grid square at a time.  The boat is not part of or inserted into the HashTable in any way.  It only uses the data from it to determine where it travels.  There needs to be a thread for the boat's movements and an animation thread. 
