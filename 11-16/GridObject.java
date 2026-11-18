@@ -3,9 +3,9 @@ import lombok.*;
 public class GridObject {
 
   @Getter
-  private MyArrayList<String> types;
+  private DLList<String> types;
 
-  public GridObject(MyArrayList<String> types) {
+  public GridObject(DLList<String> types) {
     this.types = types;
   }
 }
